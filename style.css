@@ -1,9 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap");
+
+:root {
+  --prim-blue: hsl(233, 47%, 7%);
+  --prim-desat-blue: hsl(244, 38%, 16%);
+  --prim-violet: hsl(277, 64%, 61%);
+
+  --prim-white: hsl(0, 0%, 100%);
+  --prim-trans-white-1: hsla(0, 0%, 100%, 0.75);
+  --prim-trans-white-2: hsla(0, 0%, 100%, 0.6);
+}
+
+/* ======================= Start Reset  ====================== */
+/* Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  Remove list styles (bullets/numbers)
+  in case you use it with normalize.css
+*/
+ol,
+ul {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* Removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* ======================= End Reset  ====================== */
+
+body {
+  background: var(--prim-blue);
+  color: var(--prim-white);
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100vh;
+  font-weight: 400;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  background-color: var(--prim-desat-blue);
+  border-radius: 10px;
+}
+
+section {
+  width: 45%;
+  padding: 150px 100px;
+}
+
+.left-section {
+  width: 55%;
+}
+
+.left-section > * {
+  margin-bottom: 1em;
+}
+
+.left-section h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.left-section > h1 > span {
+  color: var(--prim-violet);
+}
+
+.left-section p {
+  color: var(--prim-trans-white-1);
+  line-height: 1.75em;
+}
+
+.left-section .stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-section .stats h3 {
+  color: var(--prim-white);
+  font-weight: 600;
+  font-size: 1.75em;
+}
+
+.hero {
+  /* background-image: url("./images/image-header-mobile.jpg"); */
+
+  background: url("./images/image-header-mobile.jpg") no-repeat center;
+}
+
+.right-section {
+  margin-top: 0;
+  background: url("./images/image-header-desktop.jpg") no-repeat center center;
+  background-size: cover;
+  border-radius: 0 10px 10px 0;
+  position: relative;
+  min-width: 200px;
+}
+
+.right-section:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: hsl(277, 64%, 61%);
+  mix-blend-mode: multiply;
+}
+
 .attribution {
-  font-size: 11px;
+  position: absolute;
+  bottom: 0;
+  font-size: 0.75rem;
+  line-height: 20px;
   text-align: center;
+  color: var(--neu-more-trans-white);
+  margin-bottom: 10px;
 }
 
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
 
+@media only screen and (max-width: 625px) {
+  body {
+    flex-direction: column;
+  }
+  main {
+    flex-direction: column-reverse;
+    margin: 25px;
+  }
+
+  .left-section, .right-section {
+    width: 100%;
+    padding: 0;
+  }
+
+  .left-section {
+    text-align: center;
+  }
+
+  .right-section {
+    height: 200px;
+    background: url("./images/image-header-mobile.jpg") no-repeat;
+    background-size: cover;
+
+    border-radius: 10px 10px 0 0;
+  }
+
+  .left-section .stats {
+    flex-direction: column;
+  }
+
+}
